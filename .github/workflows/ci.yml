@@ -6,7 +6,7 @@ on:
     branches: [main]
 
 jobs:
-  test:
+  mongo-init:
     runs-on: ubuntu-latest
 
     services:
@@ -48,4 +48,24 @@ jobs:
         working-directory: ./backend
         env:
           MONGO_URI: mongodb://localhost:27017/DOCTODO
+        run: npm test
+  test:
+    runs-on: ubuntu-latest
+    needs: mongo-init
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with: 
+          node-version: '20'
+      
+      - name: Install Dependencies for backend
+        working-directory: ./backend
+        run: npm install
+
+      - name: Running Backend test
+        working-directory: ./backend
         run: npm test
