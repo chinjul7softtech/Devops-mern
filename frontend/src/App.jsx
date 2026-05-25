@@ -31,11 +31,11 @@ function App() {
 
   return (
     <div style={{ padding: '20px' }}>
-      <h1>To-Do List Devops</h1>
+      <h1>ToDo List</h1>
       <input
         value={text}
         onChange={e => setText(e.target.value)}
-        placeholder="New task"
+        placeholder="New tasks"
       />
       <button onClick={addTask}>Add</button>
       <ul>
