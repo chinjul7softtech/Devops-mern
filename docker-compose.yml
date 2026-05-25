@@ -24,7 +24,7 @@ services:
     depends_on:
       - mongo
     env_file:
-      - "./backend/.env.prod"
+      - ./backend/.env.prod
 
   frontend:
     build: './frontend'
@@ -33,4 +33,4 @@ services:
     depends_on:
       - backend
     env_file:
-      - "./frontend/.env.prod"
+      - ./frontend/.env.prod
